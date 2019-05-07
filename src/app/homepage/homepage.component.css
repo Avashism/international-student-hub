@@ -1,0 +1,27 @@
+.intro{
+    min-width: 100%;
+     height: auto;
+     background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+     color: white
+   }
+   .info{
+     padding-top: 15%;
+     margin-left: 10%;
+     padding-bottom: 10%;
+   }
+   
+   .Highlight{
+     color: white;
+     font-size: 50px;
+     float: right;
+     margin-right: 30px;
+   }
+   
+   .join{
+     margin-top: 20px;
+     margin-left: 40px;
+     background: white;
+     color: #13547a;
+     border-radius: 20px;
+     font-size: 30px;
+   }

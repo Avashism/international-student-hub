@@ -1,0 +1,24 @@
+*:focus {
+    outline: none;
+}
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+input {
+    height: 40px;
+    border-radius: 30px;
+    margin-left: 20px;
+    background: whitesmoke;
+}
+button{
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 20px;
+    background: whitesmoke;
+
+}
+.parameters{
+    width: 100%;
+    text-align: center;
+}

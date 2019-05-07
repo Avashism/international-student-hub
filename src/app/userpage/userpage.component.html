@@ -1,0 +1,32 @@
+
+<div class="parameters">
+    <h1>INTERNATIONAL HUB</h1>
+  <h3>PARAMETERS</h3>
+  <input [(ngModel)] = "Name" placeholder="Name">
+  <input [(ngModel)] = "Username"placeholder="Wnumber">
+<input [(ngModel)] = "Country" placeholder="Country">
+<input [(ngModel)] = "mGpa" placeholder="Minimum GPA">
+<input [(ngModel)] = "sCount" placeholder="Student Count">
+</div>
+<br>
+<br>
+<br>
+<div class="parameters">
+  <h3>SEARCH OPTIONS</h3>
+<button (click) = "byWnumber()">Search by Wnummber</button>
+<button (click) = "byName()">Search by Name</button>
+<button (click) = "byCountry()"> Search by Country</button>
+<button (click) = "byNameCountry()">Search by Name and Country</button>
+<button (click) = "byMinGpa()">Search by Minimum Gpa</button>
+<button (click) = "byCount()">Search by Count</button>
+
+</div>
+<br>
+<br>
+<br>
+<div class="parameters">
+
+<button (click) = "allCountry()" >All Country List</button>
+<button (click) = "allStudent()">All Student List</button>
+<button (click) = "allRecord()">All Records</button>
+</div>
