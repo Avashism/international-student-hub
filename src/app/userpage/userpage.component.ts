@@ -25,6 +25,7 @@ export class UserpageComponent implements OnInit {
     public http: HttpClient) { }
   openDialog() {
     const dialogRef = this.dialogue.open(ResultsComponent, {
+       width: '100vh',
       data: {Result: this.qResult
       }});
     dialogRef.afterClosed().subscribe(result => {

@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { UserpageComponent } from './userpage/userpage.component';
+import { MatTableModule } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ResultsComponent } from './results/results.component';
 
@@ -26,9 +27,10 @@ import { ResultsComponent } from './results/results.component';
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    MatTableModule,
     TeximateModule,
     AppRoutingModule,
-    MatDialogModule
   ],
  
   providers: [],
