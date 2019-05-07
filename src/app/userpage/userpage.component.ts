@@ -25,7 +25,8 @@ export class UserpageComponent implements OnInit {
     public http: HttpClient) { }
   openDialog() {
     const dialogRef = this.dialogue.open(ResultsComponent, {
-        });
+      data: {Result: this.qResult
+      }});
     dialogRef.afterClosed().subscribe(result => {
         console.log('Dialog result: ${result}');
         this.ngOnInit();
