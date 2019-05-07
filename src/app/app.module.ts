@@ -26,7 +26,8 @@ import { ResultsComponent } from './results/results.component';
     BrowserAnimationsModule,
     TeximateModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+   
   ],
  
   providers: [],
