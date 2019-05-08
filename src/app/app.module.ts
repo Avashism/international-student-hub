@@ -18,7 +18,8 @@ import { ResultsComponent } from './results/results.component';
     AppComponent,
     HomepageComponent,
     UserpageComponent,
-    ResultsComponent
+    ResultsComponent,
+  
   ],
   entryComponents: [
     ResultsComponent],

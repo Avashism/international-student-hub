@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using TheInternationalHubApi.Models;
 
 namespace TheInternationalHubApi.Controllers
 {
@@ -10,6 +12,11 @@ namespace TheInternationalHubApi.Controllers
   [ApiController]
   public class ValuesController : ControllerBase
   {
+    private readonly testdatabaseContext dbcontext;
+    public ValuesController(testdatabaseContext dbcontext)
+    {
+      this.dbcontext = dbcontext;
+    }
     // GET api/values
     [HttpGet]
     public ActionResult<IEnumerable<string>> Get()
@@ -18,12 +25,31 @@ namespace TheInternationalHubApi.Controllers
     }
 
     // GET api/values/5
-    [HttpGet("{id}")]
-    public ActionResult<string> Get(int id)
+    [HttpGet("{Wnumber}")]
+    public async Task<ActionResult<IEnumerable<Student>>> Get(String Wnumber)
     {
-      return "value";
+      var abc = dbcontext.Set<Student>().Where(x => x.WNumber == Wnumber);
+      var def = await abc.ToArrayAsync();
+      return def;
+
     }
 
+    //[HttpGet("{Name}")]
+    //public async Task<ActionResult<IEnumerable<Student>>> Gets(String Name)
+    //{
+    //  var student = dbcontext.Set<Student>().Where(x => x.Name == Name);
+    //  var studentdata = await student.ToArrayAsync();
+    //  return studentdata;
+    //}
+
+
+    //[HttpGet("{mGpa}")]
+    //public async Task<ActionResult<IEnumerable<Student>>> GetGPA(String mGpa)
+    //{
+    //  var student = dbcontext.Set<Student>().Where(x => x.Gpa== mGpa);
+    //  var studentdata = await student.ToArrayAsync();
+    //  return studentdata;
+    //}
     // POST api/values
     [HttpPost]
     public void Post([FromBody] string value)

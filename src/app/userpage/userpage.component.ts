@@ -4,9 +4,6 @@ import { ResultsComponent } from '../results/results.component';
 import {HttpClient} from '@angular/common/http';
 import {SERVER_ROOT} from '../config';
 
-
-
-
 @Component({
   selector: 'app-userpage',
   templateUrl: './userpage.component.html',
@@ -14,46 +11,54 @@ import {SERVER_ROOT} from '../config';
 })
 export class UserpageComponent implements OnInit {
 
-  qResult;
+  qResult : any[];
   Name;
   Wnumber;
   Country;
   mGpa;
   sCount;
 
-
   constructor(public dialogue: MatDialog,
     public http: HttpClient) { }
   openDialog() {
+    console.log("i am here again and again" + JSON.stringify(this.qResult));
     const dialogRef = this.dialogue.open(ResultsComponent, {
        width: '100vh',
-      data: {Result: this.qResult
+      data: {result: this.qResult
       }});
     dialogRef.afterClosed().subscribe(result => {
         console.log('Dialog result: ${result}');
-        this.ngOnInit();
     });
 }
+
+
+
 byName(){
 
-  this.http.post<any>
-        (`${SERVER_ROOT}/Retrive/postStoriesByCategory/2`, {'Name' : this.Name}
+  this.http.get<any>
+        (`https://localhost:44350/api/students1/${this.Name}`
         ).subscribe(
             response => {
                 this.qResult = response;
+                if(response !=null){
+                  this.openDialog();
+               }
                 console.log(response);
             });
-  this.openDialog();
 }
+
+
 byWnumber(){
-  this.http.post<any>
-        (`${SERVER_ROOT}/Retrive/postStoriesByCategory/2`, {'Wnumber' : this.Wnumber}
+  this.http.get<any>
+        (`https://localhost:44350/api/students/${this.Wnumber}`
         ).subscribe(
             response => {
                 this.qResult = response;
-                console.log(response);
+                if(response!= null){
+                  this.openDialog();
+                }
+                console.log(" I am checking " +JSON.stringify(this.qResult));
             });
-  this.openDialog();
 }
 byCountry(){
   this.http.post<any>
@@ -86,34 +91,40 @@ byCount(){
   this.openDialog();
 }
 byMinGpa(){
-  this.http.post<any>
-  (`${SERVER_ROOT}/Retrive/postStoriesByCategory/2`, {'mGpa' : this.mGpa}
+  this.http.get<any>
+  (`https://localhost:44350/api/values/${this.mGpa}`
         ).subscribe(
             response => {
-                this.qResult = response;
-                console.log(response);
-            });
-  this.openDialog();
+              if(response!= null){
+                this.openDialog();
+              }
+              console.log(" I am checking " +JSON.stringify(this.qResult));
+});
 }
 allCountry(){
   this.http.get<any>
-        (`${SERVER_ROOT}/Retrive/postStoriesByCategory/2`
+        (`https://localhost:44350/postStoriesByCategory/2`
         ).subscribe(
             response => {
-                this.qResult = response;
-                console.log(response);
-            });
-  this.openDialog();
+              this.qResult = response;
+              console.log(response);
+                });
+                
+                this.openDialog();
+    
 }
 allStudent(){
   this.http.get<any>
-  (`${SERVER_ROOT}/Retrive/postStoriesByCategory/2`
+  (`https://localhost:44350/api/Students`
         ).subscribe(
             response => {
                 this.qResult = response;
+                if(response!= null){
+                  this.openDialog();
+                }
                 console.log(response);
             });
-  this.openDialog();
+           
 }
 allRecord(){
   this.http.get<any>
