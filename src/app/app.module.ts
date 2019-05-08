@@ -11,6 +11,7 @@ import { UserpageComponent } from './userpage/userpage.component';
 import { MatTableModule } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ResultsComponent } from './results/results.component';
+import { SecondResultComponent } from './second-result/second-result.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ResultsComponent } from './results/results.component';
     HomepageComponent,
     UserpageComponent,
     ResultsComponent,
+    SecondResultComponent,
   
   ],
   entryComponents: [

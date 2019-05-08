@@ -1,0 +1,8 @@
+table {
+    width: 100%;
+  }
+  .wrapper {
+      min-width: 100vh;
+      min-height: 100vh;
+
+  }

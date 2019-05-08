@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import { ResultsComponent } from '../results/results.component';
+import { SecondResultComponent } from '../second-result/second-result.component';
 import {HttpClient} from '@angular/common/http';
 import {SERVER_ROOT} from '../config';
 
@@ -29,8 +30,18 @@ export class UserpageComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
         console.log('Dialog result: ${result}');
     });
+    
 }
-
+openDialog2() {
+  console.log("i am here again and again" + JSON.stringify(this.qResult));
+  const dialogRef = this.dialogue.open(SecondResultComponent, {
+     width: '100vh',
+    data: {result: this.qResult
+    }});
+  dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result: ${result}');
+  });
+}
 
 
 byName(){
@@ -66,9 +77,11 @@ byCountry(){
         ).subscribe(
             response => {
                 this.qResult = response;
+                if(response !=null){
+                  this.openDialog();
+               }
                 console.log(response);
             });
-  this.openDialog();
 }
 byNameCountry(){
   this.http.post<any>
@@ -76,9 +89,11 @@ byNameCountry(){
         ).subscribe(
             response => {
                 this.qResult = response;
+                if(response !=null){
+                  this.openDialog();
+               }
                 console.log(response);
             });
-  this.openDialog();
 }
 byCount(){
   this.http.post<any>
@@ -106,11 +121,14 @@ allCountry(){
         (`https://localhost:44350/postStoriesByCategory/2`
         ).subscribe(
             response => {
+              
               this.qResult = response;
+              if(response !=null){
+                this.openDialog2();
+             }
               console.log(response);
                 });
                 
-                this.openDialog();
     
 }
 allStudent(){
